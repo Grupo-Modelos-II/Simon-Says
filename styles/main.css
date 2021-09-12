@@ -1,0 +1,60 @@
+@import url('./styles.css');
+
+body {
+    background:var(--backGround);
+}
+
+.main-content-game{
+    display: flex;
+    width:100vw;
+    height:98vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-evenly;
+}
+
+#header-score{
+    color: white;
+}
+
+.element{
+    width:30%;
+    height:60%;
+    overflow:hidden;
+    border-radius:100%;
+    display:grid;
+    grid-template-columns:50% 50%;
+    grid-template-rows:50% 50%;
+    position: relative;
+}
+
+.element-color{
+    border: 1px solid black;
+    transition: ease 500ms;
+}
+
+.element-color.orange{
+    background: var(--orange);
+    border-top-left-radius: 100%;
+}
+
+.element-color.green{
+    background: var(--green);
+    border-bottom-right-radius: 100%;
+}
+
+.element-color.violet{
+    background: var(--violet);
+    border-top-right-radius: 100%;
+}
+
+.element-color.blue{
+    background: var(--blue);
+    border-bottom-left-radius: 100%;
+}
+
+.light{
+    transition: ease 250ms;
+    box-shadow: inset 0 0 20px white;
+    border: 5px solid white;
+}

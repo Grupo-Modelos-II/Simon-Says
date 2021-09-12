@@ -1,0 +1,76 @@
+:root {
+  --orange: #f0932b;
+  --orangeLight: #ffbe76;
+  --violet: #be2edd;
+  --violetLight: #e056fd;
+  --blue: #22a6b3;
+  --blueLight: #7ed6df;
+  --green: #6ab04c;
+  --greenLight: greenyellow;
+  --backGround:#36393f;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}   
+
+#root main {
+  flex-grow: 1;
+}
+
+#header{
+  border-bottom: 1px solid black;
+  padding:10px 20px;
+  height:20%;
+  background:rgb(21, 140, 186);
+  color: white;
+}
+
+#content {
+  margin-top:5%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu-container{
+  width:18%;
+  height: 100%;
+  padding:0 20px;
+  border:1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 5%;
+}
+
+.btn-menu-container{
+  width:70%;
+  height:15%;
+  font-size:20px;
+  border-radius: 5px;
+  border: 1px solid black;
+  cursor:pointer;
+  transition: 250ms;
+  align-self: center;
+}
+
+.btn-menu-container:active{
+  transition: 250ms;
+  transform: scale(0.9);
+}
+
+.btn-menu-container:hover{
+  transition: 250ms;
+  transform:scaleX(1.01);
+}
