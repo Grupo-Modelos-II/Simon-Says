@@ -4,6 +4,7 @@ const blue = document.getElementById("2");
 const green = document.getElementById("3");
 
 const scoreLabel = document.getElementById("header-score");
+const container = document.getElementById("element");
 
 
 let sequence,playerSteps,clickeable,score,bestScore,colors,time,lenghtSequence;
@@ -62,7 +63,7 @@ function setBestScore(){
     }
 }
 
-function verifyGameStatus(){
+async function verifyGameStatus(){
     if(!arrayEquals(playerSteps,sequence)){
         openDialog(modalLose).then(() => {
             handleDetail('/');
@@ -71,7 +72,9 @@ function verifyGameStatus(){
         score += 10;
         lenghtSequence++;
         setBestScore();
-
+        container.classList.add("game-won");
+        await sleep(1000);
+        container.classList.remove("game-won");
         startGame();
     }
 }
