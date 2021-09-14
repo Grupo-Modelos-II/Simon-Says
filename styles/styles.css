@@ -3,14 +3,10 @@
 
 :root {
   --orange: #f0932b;
-  --orangeLight: #ffbe76;
   --violet: #be2edd;
-  --violetLight: #e056fd;
   --blue: #22a6b3;
-  --blueLight: #7ed6df;
   --green: #6ab04c;
   --greenLight: greenyellow;
-  --backGround:#36393f;
 }
 
 body {
