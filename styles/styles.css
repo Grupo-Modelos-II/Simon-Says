@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 :root {
   --orange: #f0932b;
   --orangeLight: #ffbe76;
@@ -24,43 +27,53 @@ body {
 
 #root main {
   flex-grow: 1;
+  background-image: url("../img/shadow.png"), url("../img/menu-background.jpg");
+  background-color: #36393f;
+  background-position: center;
+  background-size: 100% 100%;
 }
 
 #header{
-  border-bottom: 1px solid black;
-  padding:10px 20px;
-  height:20%;
-  background:rgb(21, 140, 186);
+  padding-top: 10px;
+  height: 8vh;
+  background: rgb(0, 0, 0);
   color: white;
 }
 
+#header > h1{
+  padding: 5px 5px 5px 20px;
+  margin: 0px;
+  font-size: 6vh;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 #content {
-  margin-top:5%;
-  height: 50vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
 #menu-container{
-  width:18%;
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 20px;
+  padding: 3vh 3vh 2vh 3vh;
   height: 100%;
-  padding:0 20px;
-  border:1px solid black;
+  width: 40vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  border-radius: 5%;
+  margin-right: 2vh;
+  margin-top: 15vh;
+  box-shadow: 5px 5px 15px black;
 }
 
 .btn-menu-container{
-  width:70%;
-  height:15%;
-  font-size:20px;
-  border-radius: 5px;
-  border: 1px solid black;
-  cursor:pointer;
+  width: 100%;
+  height: 7vh;
+  margin-bottom: 1vh;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 3vh;
+  cursor: pointer;
   transition: 250ms;
   align-self: center;
 }
@@ -72,5 +85,7 @@ body {
 
 .btn-menu-container:hover{
   transition: 250ms;
-  transform:scaleX(1.01);
+  background-color: black;
+  color: white;
+  transform:scaleX(0.9);
 }
