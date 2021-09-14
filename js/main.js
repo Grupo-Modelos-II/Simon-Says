@@ -65,6 +65,9 @@ function setBestScore(){
 
 async function verifyGameStatus(){
     if(!arrayEquals(playerSteps,sequence)){
+        container.classList.add("game-lose");
+        await sleep(1000);
+        container.classList.remove("game-lose");
         openDialog(modalLose).then(() => {
             handleDetail('/');
         });
@@ -81,18 +84,18 @@ async function verifyGameStatus(){
 
 async function handleClick(event){
     if(clickeable){
-        event.target.classList.add('light');
-        await sleep(250);
-        event.target.classList.remove('light');
         if(playerSteps.length < sequence.length){
             playerSteps.push(parseInt(event.target.id));
             if(playerSteps.length === sequence.length){
-                clickeable = false;
                 handleClick(-1);
             }
+            event.target.classList.add('light');
+            await sleep(250);
+            event.target.classList.remove('light');
+        }else{
+            clickeable = false;
+            verifyGameStatus();
         }
-    }else{
-        verifyGameStatus();
     }
 }
 
