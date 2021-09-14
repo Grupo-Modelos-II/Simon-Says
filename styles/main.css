@@ -68,17 +68,12 @@ body {
 
 .game-won{
     transition: ease 250ms;
-<<<<<<< HEAD
     box-shadow: inset 0 0 20px var(--greenLight);
     border: 15px solid var(--greenLight);
-=======
-    box-shadow: 0 0 20px green;
-    border: 5px solid green;
 }
 
 .game-lose {
     transition: ease 250ms;
     box-shadow: 0 0 20px red;
     border: 5px solid red;
->>>>>>> refs/remotes/origin/master
 }
