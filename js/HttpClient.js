@@ -1,7 +1,7 @@
 class HttpClient{
 
-    constructor(url = 'localhost:5000/') {
-        this.url = url.endsWith('/') ? url : `${url}/`;
+    constructor(url = 'http://localhost:8000') {
+        this.url = url;
         this.headers = { 'Content-Type': 'application/json' };
     }
 
