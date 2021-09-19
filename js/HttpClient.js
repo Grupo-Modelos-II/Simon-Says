@@ -1,27 +1,27 @@
 class HttpClient{
 
-    constructor(url = 'http://localhost:8000') {
+    constructor(url = 'http://localhost:5000') {
         this.url = url;
         this.headers = { 'Content-Type': 'application/json' };
     }
 
     async sendRequest(request) {
-        return await fetch(request.url, {
+        return await (await fetch(request.url, {
           method: request.method,
           headers: request.headers,
           body: JSON.stringify(request.data),
-        });
+        })).json();
       }
     
     async get(endpoint) {
-        return this.sendRequest({
+        return await this.sendRequest({
           url: `${this.url}${endpoint}`,
           method: 'GET',
         });
       }
     
     async post(endpoint, data) {
-        return this.sendRequest({
+        return await this.sendRequest({
           url: `${this.url}${endpoint}`,
           method: 'POST',
           headers: this.headers,
@@ -30,7 +30,7 @@ class HttpClient{
       }
     
     async put(endpoint, data) {
-        return this.sendRequest({
+        return await this.sendRequest({
           url: `${this.url}${endpoint}`,
           method: 'PUT',
           headers: this.headers,
@@ -39,7 +39,7 @@ class HttpClient{
       }
     
     async del(endpoint) {
-        return this.sendRequest({
+        return await this.sendRequest({
           url: `${this.url}${endpoint}`,
           method: 'DELETE',
         });
