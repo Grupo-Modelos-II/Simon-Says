@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/main.css" />
+    <title>Simon Says</title>
+    <style>
+        table {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <main>
+            <table>
+                <thead>
+                    <th>Posición</th>
+                    <th>Usuario</th>
+                    <th>Puntaje</th>
+                </thead>
+                <tbody id="table-body">
+
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <script src="../js/HttpClient.js"></script>
+    <script src="../js/formsController.js"></script>
+    <script>
+        const table = document.getElementById('table-body');
+        async function getRank() {
+            const { data: { rank } } = await httpClient.get('/player/rank');
+            for (let index in rank) {
+                table.innerHTML += `<tr><td>${parseInt(index) + 1}</td><td>${rank[index].name}</td><td>${rank[index].max_score}</td></tr>`;
+            }
+        }
+        getRank();
+    </script>
+</body>
+
+</html>

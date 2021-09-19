@@ -6,8 +6,25 @@ const openDialog = (content) => {
     return Swal.fire(content);
 }
 
-const verifyUserStatus = () => {
+const verifyUserStatus = async () => {
     const token = localStorage.getItem('token');
-    const redirectPage = token? 'pages/main.html' : 'pages/login.html';
+    httpClient.addHeader({name: 'Authorization', value: `Bearer ${token}`});
+    let redirectPage;
+    if(token) {
+        const {data: {isAuthorized}} = await httpClient.get('/auth');
+        if(!isAuthorized) {
+            localStorage.clear();
+            redirectPage = 'pages/login.html';
+        } else {
+            redirectPage = 'pages/main.html';
+        }
+    } else {
+        redirectPage = 'pages/login.html';
+    }
     handleDetail(redirectPage);
+};
+
+const closeSession = () => {
+    localStorage.removeItem('token');
+    handleDetail('/');
 };

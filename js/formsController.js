@@ -12,7 +12,9 @@ if(register) {
             httpClient.post('/player/', {name, pass, max_score: 0})
             .then(({state, data: {message}}) => {
                 if(state) {
-                    openDialog({title: 'Exito', text: message, icon: 'success'});
+                    openDialog({title: 'Exito', text: message, icon: 'success'}).then(() => {
+                        handleDetail('/');
+                    });
                 } else {
                     throw message;
                 }

@@ -6,15 +6,19 @@ const green = document.getElementById("3");
 const scoreLabel = document.getElementById("header-score");
 const container = document.getElementById("element");
 
+httpClient.addHeader({name: 'Authorization', value: `Bearer ${localStorage.getItem('token')}`});
 
-let sequence,playerSteps,clickeable,score,bestScore,colors,time,lenghtSequence;
 
-function initVars(){
+let sequence,playerSteps,clickeable,score,userName,bestScore,colors,time,lenghtSequence;
+
+async function initVars(){
     sequence = [];
     playerSteps = [];
     clickeable = false;
     score = 0;
-    bestScore = localStorage.getItem('score') || score;
+    const {state, data: {userData: {name, max_score}}} = await httpClient.get('/player/');
+    bestScore = state ? max_score : 0;
+    userName = state ? name : 'Guest';
     colors = {
         0:orange,
         1:violet,
@@ -55,11 +59,11 @@ async function iluminateElement(color){
     }, time);
 }
 
-function setBestScore(){
+async function setBestScore(){
     if(score > bestScore){
         bestScore = score;
-        localStorage.setItem('score', bestScore);
-        scoreLabel.innerText = `Mejor Puntuación : ${bestScore}`;
+        const response = await httpClient.put('/player/', {max_score: bestScore});
+        scoreLabel.innerText = `¡Hola ${userName}! Mejor Puntuación: ${bestScore}`;
     }
 }
 
@@ -74,7 +78,7 @@ async function verifyGameStatus(){
     }else{
         score += 10;
         lenghtSequence++;
-        setBestScore();
+        await setBestScore();
         container.classList.add("game-won");
         await sleep(1000);
         container.classList.remove("game-won");
@@ -115,14 +119,9 @@ async function startGame(){
 }
 
 
-document.addEventListener('DOMContentLoaded',() => {
-    initVars();
-    scoreLabel.innerText = `Mejor Puntuación : ${bestScore}`;
+document.addEventListener('DOMContentLoaded',async () => {
+    await initVars();
+    scoreLabel.innerText = `¡Hola ${userName}! Mejor Puntuación: ${bestScore}`;
     startGame();
     addListeners();
 });
-
-
-
-
-

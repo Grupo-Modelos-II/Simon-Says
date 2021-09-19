@@ -77,3 +77,8 @@ body {
     box-shadow: 0 0 20px red;
     border: 5px solid red;
 }
+
+button {
+    width: 25%!important;
+    margin-top: 50px;
+}

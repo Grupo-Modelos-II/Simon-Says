@@ -5,6 +5,10 @@ class HttpClient{
         this.headers = { 'Content-Type': 'application/json' };
     }
 
+    addHeader(header) {
+      this.headers[header.name] = header.value;
+    }
+
     async sendRequest(request) {
         return await (await fetch(request.url, {
           method: request.method,
@@ -17,6 +21,7 @@ class HttpClient{
         return await this.sendRequest({
           url: `${this.url}${endpoint}`,
           method: 'GET',
+          headers: this.headers,
         });
       }
     
@@ -42,6 +47,7 @@ class HttpClient{
         return await this.sendRequest({
           url: `${this.url}${endpoint}`,
           method: 'DELETE',
+          headers: this.headers,
         });
       }
 }
