@@ -1,0 +1,26 @@
+#menu-container{
+    width:50vw;
+    height: 70vh;
+    overflow-y: auto;
+}
+
+table,
+th,
+td {
+  border: none;
+  border-bottom: 1px solid #c8c8c8;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 40px;
+  font-size: 0.9em;
+}
+
+section {text-align: center;}
+
+tr:nth-child(odd) {
+  background-color: #eee;
+}
+tr:nth-child(even) {
+  background-color: #fff;
+}
